@@ -1,19 +1,34 @@
 var http = require('http');
+var https = require('https');
 var fs = require('fs');
 var urllib = require("url");
 var Client = require('node-ssdp').Client;
 var dgram = require('dgram'); 
+var nconf = require('nconf');
+var args = process.argv.slice(2);
+console.log(args);
 
 //null will cause the server to discover the Roku on startup, hard coding a value will allow for faster startups
 var rokuAddress = null;
-var PORT=1234; 
-
 var ssdp = new Client();
+
+nconf.argv()
+   .env()
+   .file({ file: 'config.json' });
+   
+var rokusToControl = nconf.get('rokusToControl');
+var rokuToControl = rokusToControl[args[0]];
+if (!rokuToControl)
+    throw "Valid Roku to control was not specified via the command line";
+    
+var PORT = nconf.get('port');
 
 //handle the ssdp response when the roku is found
 ssdp.on('response', function (headers, statusCode, rinfo) {
-	rokuAddress = headers.LOCATION;
-	console.log("Found Roku: ",rokuAddress);
+    if (headers.USN == rokuToControl) {
+        rokuAddress = headers.LOCATION;
+        console.log("Found Roku: ",rokuAddress);
+    }
 });
 
 //this is called periodically and will only look for the roku if we don't already have an address
@@ -89,7 +104,38 @@ function getRequestData(request,callback) {
 //depending on the URL endpoint accessed, we use a different handler.
 //This is almost certainly not the optimal way to build a TCP server, but for our simple example, it is more than sufficient
 var handlers = {
-    //This will play the last searched movie or show, we use it because it consistently resides to the right of the search box
+    "/roku/keypress" : function (request, response) {
+        getRequestData(request,function(data) {
+            var key = data.replace(/^\s+|\s+$/g,'').toLowerCase();
+            
+            post(rokuAddress + "keypress/" + key);
+            response.end("OK");
+		});
+    },
+    "/roku/netflix":function(request,response) {
+		post(rokuAddress + "launch/12");
+        response.end("OK");
+	},
+    "/roku/amazon":function(request,response) {
+		post(rokuAddress + "launch/13");
+        response.end("OK");
+	},
+    "/roku/plex":function(request,response) {
+        post(rokuAddress + "launch/13535");
+        response.end("OK");
+	},
+    "/roku/keyPressTimes":function(request, response) {
+        getRequestData(request,function(data) {
+			var parsedJson = JSON.parse(data);
+            var sequence = [];
+            
+            for (var i = 0; i < parsedJson.times; i++)
+                sequence.push(rokuAddress + "keypress/" + parsedJson.direction);
+            
+			postSequence(sequence,function() { });
+			response.end("OK");	
+		});
+    },
 	"/roku/playlast":function(request,response) {
 		postSequence([
 			rokuAddress+"keypress/home",    //wake the roku up, if its not already
@@ -156,11 +202,6 @@ var handlers = {
 			response.end("OK");	 //respond with OK before the operation finishes
 		});
 	},
-    //the play and pause buttons are the same and is called "Play"
-	"/roku/playpause":function(request,response) {
-		post(rokuAddress+"keypress/Play");
-		response.end("OK");	
-	},
 	"/roku/nextepisode":function(request,response) {
 		postSequence([
 			rokuAddress+"keypress/back",
@@ -216,7 +257,18 @@ function handleRequest(request, response){
 setInterval(searchForRoku,1000);
 searchForRoku();
 
-//start the tcp server
-http.createServer(handleRequest).listen(PORT,function(){
-    console.log("Server listening on: http://localhost:%s", PORT);
-});
+if (args[1] == 'http') {
+    http.createServer(handleRequest).listen(PORT, function() {
+        console.log("Server listening on: http://localhost:%s", PORT);
+    });
+}
+else {
+    const options = {
+        key: fs.readFileSync('privatekey.pem'),
+        cert: fs.readFileSync('public.pem')  
+    };
+
+    https.createServer(options, handleRequest).listen(PORT, function() {
+        console.log("Server listening on: https://localhost:%s", PORT);
+    });
+}

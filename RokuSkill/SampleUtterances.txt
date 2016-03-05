@@ -1,3 +1,45 @@
+Home home
+Home go home
+Home go home
+
+Up up
+Up go up
+
+Down down
+Down go down
+
+Left left
+Left go left
+
+Right right
+Right go right
+
+Select select
+
+Back back
+Back go back
+
+PlayPause play
+PlayPause pause
+PlayPause stop
+PlayPause start
+PlayPause freeze
+PlayPause go
+
+LaunchNetflix Netflix
+LaunchNetflix net flicks
+
+LaunchAmazon Amazon
+LaunchAmazon launch amazon
+
+LaunchPlex Plex
+LaunchPlex launch plex
+
+KeyPressTimes go {Direction} {five|Times} times
+KeyPressTimes go {Direction} {five|Times} times
+KeyPressTimes go {Direction} {five|Times} times
+KeyPressTimes go {Direction} {five|Times} times
+
 PlayLast play the last show
 PlayLast play last
 PlayLast play the last netflix show
@@ -21,13 +63,6 @@ ToggleTV on screen
 ToggleTV off screen
 ToggleTV screen on
 ToggleTV screen off
-
-PlayPause play
-PlayPause pause
-PlayPause stop
-PlayPause start
-PlayPause freeze
-PlayPause go
 
 Type type {futurama|Text}
 Type type {How I met your mother|Text}

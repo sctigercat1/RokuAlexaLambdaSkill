@@ -1,6 +1,63 @@
 {
   "intents": [
     {
+      "intent": "Home",
+      "slots": []
+    },
+    {
+      "intent": "Up",
+      "slots": []
+    },
+    {
+      "intent": "Down",
+      "slots": []
+    },
+    {
+      "intent": "Left",
+      "slots": []
+    },
+    {
+      "intent": "Right",
+      "slots": []
+    },
+    {
+      "intent": "Select",
+      "slots": []
+    },
+    {
+      "intent": "Back",
+      "slots": []
+    },
+    {
+      "intent": "PlayPause",
+      "slots": []
+    },
+    {
+      "intent": "LaunchNetflix",
+      "slots": []
+    },
+    {
+      "intent": "LaunchAmazon",
+      "slots": []
+    },
+    {
+      "intent": "LaunchPlex",
+      "slots": []
+    },
+    {
+      "intent": "KeyPressTimes",
+      "slots": [
+          {
+              "name": "Direction",
+              "type": "MY_DIRECTION"
+          },
+          {
+              "name": "Times",
+              "type": "AMAZON.NUMBER"
+          }
+      ]
+    },
+    {
       "intent": "PlayLast",
       "slots": []
     },
@@ -24,10 +81,6 @@
               "type": "LITERAL"
           }
       ]
-    },
-	{
-      "intent": "PlayPause",
-      "slots": []
     },
 	{
       "intent": "SearchPlay",

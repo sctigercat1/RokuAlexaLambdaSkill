@@ -5,11 +5,8 @@
   "dependencies": {
     "node-ssdp": "2.5.1"
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@github.com:julianh2o/RokuAlexaLambdaSkill.git"
-    }
-  ]
+  "devDependencies": {
+    "nconf": "^0.8.4",
+    "nodemon": "^1.9.1"
+  }
 }
-
