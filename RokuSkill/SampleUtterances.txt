@@ -35,10 +35,10 @@ LaunchAmazon launch amazon
 LaunchPlex Plex
 LaunchPlex launch plex
 
-KeyPressTimes go {Direction} {five|Times} times
-KeyPressTimes go {Direction} {five|Times} times
-KeyPressTimes go {Direction} {five|Times} times
-KeyPressTimes go {Direction} {five|Times} times
+KeyPressTimes go {Direction} {Times} times
+KeyPressTimes go {Direction} {Times} times
+KeyPressTimes go {Direction} {Times} times
+KeyPressTimes go {Direction} {Times} times
 
 PlayLast play the last show
 PlayLast play last
