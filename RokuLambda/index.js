@@ -133,7 +133,7 @@ AlexaRoku.prototype.intentHandlers = {
 		});
     },
 	PlayPause: function (intent, session, response) {
-		sendCommand("/roku/playpause",null,function() {
+		sendCommand("/roku/keypress",'play',function() {
 			response.tell("OK.");
 		});
     },
