@@ -58,6 +58,10 @@
       "slots": []
     },
     {
+      "intent": "Netflix",
+      "slots": []
+    },
+    {
       "intent": "Amazon",
       "slots": []
     },

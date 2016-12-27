@@ -41,6 +41,12 @@ Hulu open hulu
 Hulu start hulu
 Hulu go to hulu
 
+Netflix netflix
+Netflix set to netflix
+Netflix open netflix
+Netflix start netflix
+Netflix go to netflix
+
 Amazon amazon
 Amazon set to amazon
 Amazon open amazon

@@ -3,34 +3,20 @@ var https = require('https');
 var fs = require('fs');
 var urllib = require("url");
 var Client = require('node-ssdp').Client;
-var dgram = require('dgram'); 
-var nconf = require('nconf');
-var args = process.argv.slice(2);
-console.log(args);
+var dgram = require('dgram');
 
 //null will cause the server to discover the Roku on startup, hard coding a value will allow for faster startups
 // When manually setting this, include the protocol, port, and trailing slash eg:
 // var rokuAddress = "http://192.168.1.100:8060/";
 var rokuAddress = null;
-var ssdp = new Client();
+var PORT = null;
 
-nconf.argv()
-   .env()
-   .file({ file: 'config.json' });
-   
-var rokusToControl = nconf.get('rokusToControl');
-var rokuToControl = rokusToControl[args[0]];
-if (!rokuToControl)
-    throw "Valid Roku to control was not specified via the command line";
-    
-var PORT = nconf.get('port');
+var ssdp = new Client();
 
 //handle the ssdp response when the roku is found
 ssdp.on('response', function (headers, statusCode, rinfo) {
-    if (headers.USN == rokuToControl) {
-        rokuAddress = headers.LOCATION;
-        console.log("Found Roku: ",rokuAddress);
-    }
+    rokuAddress = headers.LOCATION;
+    console.log("Found Roku: ",rokuAddress);
 });
 
 //this is called periodically and will only look for the roku if we don't already have an address
@@ -211,6 +197,10 @@ var handlers = {
             postSequence(sequence);
             response.end("OK");     //respond with OK before the operation finishes
         });
+    },
+    "/roku/netflix":function(request,response) {
+        post(rokuAddress + "launch/12");
+        response.end("OK");
     },
     "/roku/amazon":function(request,response) {
         post(rokuAddress + "launch/13");
