@@ -4,6 +4,8 @@ var fs = require('fs');
 var urllib = require("url");
 var Client = require('node-ssdp').Client;
 var dgram = require('dgram');
+var args = process.argv.slice(2);
+console.log(args);
 
 //null will cause the server to discover the Roku on startup, hard coding a value will allow for faster startups
 // When manually setting this, include the protocol, port, and trailing slash eg:
@@ -249,8 +251,11 @@ if (args[1] == 'http') {
 }
 else {
     const options = {
-        key: fs.readFileSync('privatekey.pem'),
-        cert: fs.readFileSync('public.pem')  
+        // https://stackoverflow.com/questions/22584268/node-js-https-pem-error-routinespem-read-biono-start-line
+        // openssl req -newkey rsa:2048 -new -nodes -keyout key.pem -out csr.pem
+        // openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out server.crt
+        key: fs.readFileSync('key.pem'),
+        cert: fs.readFileSync('server.crt')  
     };
 
     https.createServer(options, handleRequest).listen(PORT, function() {
