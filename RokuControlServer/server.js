@@ -11,7 +11,7 @@ console.log(args);
 // When manually setting this, include the protocol, port, and trailing slash eg:
 // var rokuAddress = "http://192.168.1.100:8060/";
 var rokuAddress = null;
-var PORT = null;
+var PORT = 1234;
 
 var ssdp = new Client();
 
