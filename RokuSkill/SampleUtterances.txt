@@ -19,6 +19,10 @@ Select select
 Back back
 Back go back
 
+Fastforward fast forward
+
+Rewind rewind
+
 PlayPause play
 PlayPause pause
 PlayPause stop
@@ -26,57 +30,52 @@ PlayPause start
 PlayPause freeze
 PlayPause go
 
-LaunchNetflix Netflix
-LaunchNetflix net flicks
-
-LaunchAmazon Amazon
-LaunchAmazon launch amazon
-
-LaunchPlex Plex
-LaunchPlex launch plex
-
 KeyPressTimes go {Direction} {Times} times
 KeyPressTimes go {Direction} {Times} times
 KeyPressTimes go {Direction} {Times} times
 KeyPressTimes go {Direction} {Times} times
 
-PlayLast play the last show
-PlayLast play last
-PlayLast play the last netflix show
-PlayLast play the next episode
-PlayLast play next
-PlayLast play netflix
+Hulu hulu
+Hulu set to hulu
+Hulu open hulu
+Hulu start hulu
+Hulu go to hulu
 
-NextEpisode skip
-NextEpisode skip episode
-NextEpisode next episode
+Amazon amazon
+Amazon set to amazon
+Amazon open amazon
+Amazon start amazon
+Amazon go to amazon
 
-LastEpisode last episode
-LastEpisode back
-LastEpisode prev episode
+Plex plex
+Plex set to plex
+Plex open plex
+Plex start plex
+Plex go to plex
 
-ToggleTV toggle television
-ToggleTV toggle TV
-ToggleTV TV on
-ToggleTV TV off
-ToggleTV on screen
-ToggleTV off screen
-ToggleTV screen on
-ToggleTV screen off
+Pandora pandora
+Pandora set to pandora
+Pandora open pandora
+Pandora start pandora
+Pandora go to pandora
+
+PlayPause play
+PlayPause pause
+PlayPause stop
+PlayPause start
+PlayPause freeze
+PlayPause go
 
 Type type {futurama|Text}
 Type type {How I met your mother|Text}
 
-SearchPlay search and play {futurama|Text}
-SearchPlay search and play {cosmos|Text}
-SearchPlay search and play {How I met your mother|Text}
-SearchPlay search and play {Knights of sidonia|Text}
-SearchPlay search and play {Gargantia|Text}
-SearchPlay play next {futurama|Text}
-SearchPlay play next {cosmos|Text}
-SearchPlay play next {How I met your mother|Text}
-SearchPlay play next {Knights of sidonia|Text}
-SearchPlay play next {Gargantia|Text}
+SearchPlayNetflix search and play {futurama|Text}
+SearchPlayNetflix play next {Gargantia|Text}
+
+SearchRoku search {The Librarians|Text}
+SearchRoku Roku search {Star Trek|Text}
+SearchRoku search on Roku {Star Wars|Text}
+SearchRoku search {Stranger Things|Text} on Roku
 
 HelpIntent help
 HelpIntent help me

@@ -33,18 +33,6 @@
       "slots": []
     },
     {
-      "intent": "LaunchNetflix",
-      "slots": []
-    },
-    {
-      "intent": "LaunchAmazon",
-      "slots": []
-    },
-    {
-      "intent": "LaunchPlex",
-      "slots": []
-    },
-    {
       "intent": "KeyPressTimes",
       "slots": [
           {
@@ -61,16 +49,20 @@
       "intent": "PlayLast",
       "slots": []
     },
-	{
-      "intent": "NextEpisode",
-      "slots": []
-    },
-	{
-      "intent": "LastEpisode",
+    {
+      "intent": "Pandora",
       "slots": []
     },
     {
-      "intent": "ToggleTV",
+      "intent": "Hulu",
+      "slots": []
+    },
+    {
+      "intent": "Amazon",
+      "slots": []
+    },
+    {
+      "intent": "Plex",
       "slots": []
     },
     {
@@ -82,14 +74,35 @@
           }
       ]
     },
-	{
-      "intent": "SearchPlay",
+    {
+      "intent": "PlayPause",
+      "slots": []
+    },
+    {
+      "intent": "SearchPlayNetflix",
       "slots": [
           {
               "name": "Text",
               "type": "LITERAL"
           }
       ]
+    },
+    {
+      "intent": "SearchRoku",
+      "slots": [
+          {
+              "name": "Text",
+              "type": "LITERAL"
+          }
+      ]
+    },
+    {
+      "intent": "Fastforward",
+      "slots": []
+    },
+    {
+      "intent": "Rewind",
+      "slots": []
     },
     {
       "intent": "HelpIntent",
